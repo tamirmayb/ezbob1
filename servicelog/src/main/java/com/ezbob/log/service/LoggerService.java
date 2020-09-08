@@ -16,7 +16,7 @@ public class LoggerService {
     @NoArgsConstructor
     @ToString
     private static class MyDto {
-        private int n;
+        private int input;
         private List<Integer> result;
     }
 

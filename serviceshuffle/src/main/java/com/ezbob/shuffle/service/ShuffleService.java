@@ -33,22 +33,22 @@ public class ShuffleService {
     @AllArgsConstructor
     @ToString
     private static class MyDto {
-        private int n;
+        private int input;
         private List<Integer> result;
     }
 
-    public List<Integer> createList(int n) {
-        IntStream range = IntStream.rangeClosed(1, n);
+    public List<Integer> createList(int input) {
+        IntStream range = IntStream.rangeClosed(1, input);
         List<Integer> list = range.boxed().collect(Collectors.toList());
         Collections.shuffle(list);
 
-        this.publishEventToRabbitMq(list, n);
+        this.publishEventToRabbitMq(list, input);
         return list;
     }
 
     @Async
-    private void publishEventToRabbitMq(final List<Integer> result, final int n) {
-        final MyDto dto = new MyDto(n, result);
+    private void publishEventToRabbitMq(final List<Integer> result, final int input) {
+        final MyDto dto = new MyDto(input, result);
         logger.info("Sending the following event object to the queue: " + result);
         rabbitTemplate.convertAndSend(queue, dto);
         logger.info("Message successfully sent to the rabbitMq.");
