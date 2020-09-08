@@ -6,11 +6,11 @@ Author: Tamir Mayblat, tamirmayb@gmail.com
 
 ## Content
 
-###Prerequisites :
+## Prerequisites :
 
 * A working rabbitmq server with factory settings (localhost:5672, username: guest, password: guest)
 
-###How to use :
+## How to use :
 
 * Start rabbitmq server. 
 * Start LoggerApp (8081) and ShuffleApp (8080) microservices.
